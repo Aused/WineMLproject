@@ -103,16 +103,16 @@ Instances: There are a total of 178 wine samples.
 
 Attributes:
 
-Alcohol
-Malic acid
-Ash
-Alkalinity of ash
-Magnesium
-Total phenols
-Flavanoids
-Nonflavanoid phenols
-Proanthocyanins
-Color intensity
-Hue
-OD280/OD315 of diluted wines
-Proline
+Alcohol,
+Malic acid,
+Ash,
+Alkalinity of ash,
+Magnesium,
+Total phenols,
+Flavanoids,
+Nonflavanoid phenols,
+Proanthocyanins,
+Color intensity,
+Hue,
+OD280/OD315 of diluted wines,
+Proline.
