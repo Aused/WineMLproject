@@ -27,20 +27,20 @@ In the space definition, n_layers represents the number of hidden layers, and n_
 
 We create a function build_model to construct the neural network model based on the hyperparameters.
 
-def build_model(params, input_shape):
-
-    model = Sequential()
+    def build_model(params, input_shape):
     
-    model.add(Dense(params['n_units_layer_0'], activation='relu', input_shape=input_shape))
-    
-    if 'n_units_layer_1' in params:
-    
-        model.add(Dense(params['n_units_layer_1'], activation='relu'))
-    model.add(Dense(3, activation='softmax'))
-    
-    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-    
-    return model
+        model = Sequential()
+        
+        model.add(Dense(params['n_units_layer_0'], activation='relu',input_shape=input_shape))
+        
+        if 'n_units_layer_1' in params:
+        
+            model.add(Dense(params['n_units_layer_1'], activation='relu'))
+        model.add(Dense(3, activation='softmax'))
+        
+        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy',metrics=['accuracy'])
+        
+        return model
     
 
 This function creates a sequential model with one or two hidden layers and a final output layer with a softmax activation function for classification.
