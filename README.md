@@ -91,3 +91,28 @@ The results show a significant discrepancy between the validation accuracy (65.5
 The relatively low accuracy on the test set also suggests that the model might not be capturing the underlying patterns in the data effectively. The small number of epochs (2) and hidden units (2) might be too restrictive, leading to an underfitting problem.
 
 Further investigation would be needed to understand the underlying cause of these results. Potential areas to explore might include the data distribution, model architecture, and the range of hyperparameters considered in the optimization process. The addition of more informative features, data preprocessing, or trying different machine learning models could also lead to improved results.
+
+
+Wine Recognition Dataset
+
+Features: The data consists of 13 different measurements taken for different constituents found in three types of wine grown in the same region in Italy.
+
+Classes: There are three classes (types of wine) represented.
+
+Instances: There are a total of 178 wine samples.
+
+Attributes:
+
+Alcohol
+Malic acid
+Ash
+Alkalinity of ash
+Magnesium
+Total phenols
+Flavanoids
+Nonflavanoid phenols
+Proanthocyanins
+Color intensity
+Hue
+OD280/OD315 of diluted wines
+Proline
