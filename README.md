@@ -10,11 +10,17 @@ This project involves hyperparameter tuning and training a feedforward neural ne
 First, we define the hyperparameter space, specifying the possible values for each hyperparameter.
 
 space = {
+
     'n_layers': hp.choice('n_layers', [1, 2]),
+    
     'n_units_layer_0': hp.choice('n_units_layer_0', [32, 64, 128]),
+    
     'epochs': hp.choice('epochs', [50, 100]),
+    
     'batch_size': hp.choice('batch_size', [16, 32, 64])
+    
 }
+
 
 In the space definition, n_layers represents the number of hidden layers, and n_units_layer_0 indicates the number of units in the first hidden layer. The epochs and batch_size control the training process.
 
@@ -23,13 +29,20 @@ In the space definition, n_layers represents the number of hidden layers, and n_
 We create a function build_model to construct the neural network model based on the hyperparameters.
 
 def build_model(params, input_shape):
+
     model = Sequential()
+    
     model.add(Dense(params['n_units_layer_0'], activation='relu', input_shape=input_shape))
+    
     if 'n_units_layer_1' in params:
+    
         model.add(Dense(params['n_units_layer_1'], activation='relu'))
     model.add(Dense(3, activation='softmax'))
+    
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    
     return model
+    
 
 This function creates a sequential model with one or two hidden layers and a final output layer with a softmax activation function for classification.
 
@@ -61,12 +74,15 @@ The objective function first checks the number of layers, builds the model using
 
 We utilize the fmin function from Hyperopt to find the optimal hyperparameters.
 
-best = fmin(fn=objective, space=space, algo=tpe.suggest, max_evals=30, verbose=2)
+
+    best = fmin(fn=objective, space=space, algo=tpe.suggest, max_evals=30, verbose=2)
+
 
 The fmin function takes the objective function and hyperparameter space and returns the best hyperparameters that minimize the objective function.
 
 By using Hyperopt to optimize hyperparameters and Keras to build and train a neural network model, this code provides a flexible solution for classification tasks.
 
+------------------------------------
 
 Analysis of Biases, Methods, and Results
 
