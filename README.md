@@ -38,12 +38,21 @@ This function creates a sequential model with one or two hidden layers and a fin
 We then define the objective function for Hyperopt to minimize, including building and training the model.
 
 def objective(params):
+
     if params['n_layers'] == 2:
+    
         params['n_units_layer_1'] = hp.choice('n_units_layer_1', [32, 64, 128])
+        
     model = build_model(params, input_shape=(X_train_scaled.shape[1],))
-    early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-    history = model.fit(X_train_scaled, y_train, validation_split=0.2, epochs=params['epochs'], batch_size=params['batch_size'], callbacks=[early_stop], verbose=0)
+    
+    early_stop = EarlyStopping(monitor='val_loss', patience=10, 
+    restore_best_weights=True)
+    
+    history = model.fit(X_train_scaled, y_train, validation_split=0.2, 
+    epochs=params['epochs'], batch_size=params['batch_size'], callbacks=[early_stop], verbose=0)
+    
     loss = history.history['val_loss'][-1]
+    
     return loss
 
 The objective function first checks the number of layers, builds the model using the build_model function, applies early stopping, and fits the model to the training data. The function returns the validation loss.
@@ -60,6 +69,7 @@ By using Hyperopt to optimize hyperparameters and Keras to build and train a neu
 
 
 Analysis of Biases, Methods, and Results
+
 Biases in Data
 
 It is important to recognize that the quality of a machine learning model's predictions largely depends on the quality of the data. If there are biases present in the data collection process, the model will likely learn these biases. For example, if certain classes are underrepresented in the training data, the model might be biased towards predicting the overrepresented classes. In this specific project, without further details about the data collection and preprocessing, it's challenging to identify specific biases. However, understanding the source and nature of the data would be a crucial step in identifying and mitigating any potential biases.
@@ -73,17 +83,27 @@ Results
 The best hyperparameters found were:
 
 Batch size: 2
+
 Epochs: 2
+
 Number of hidden layers: 1
+
 Units in the first hidden layer: 2
+
 Units in the second hidden layer (if applicable): 2
+
 The model was then trained and evaluated, leading to the following results:
 
 Training loss: 0.8708
+
 Training accuracy: 56.64%
+
 Validation loss: 0.8246
+
 Validation accuracy: 65.52%
+
 Test accuracy: 50.00%
+
 Interpretation and Potential Concerns
 
 The results show a significant discrepancy between the validation accuracy (65.52%) and the test accuracy (50.00%). This might indicate an issue with the model's generalization to unseen data or might reflect the biases in the data distribution between training, validation, and test sets.
@@ -92,6 +112,7 @@ The relatively low accuracy on the test set also suggests that the model might n
 
 Further investigation would be needed to understand the underlying cause of these results. Potential areas to explore might include the data distribution, model architecture, and the range of hyperparameters considered in the optimization process. The addition of more informative features, data preprocessing, or trying different machine learning models could also lead to improved results.
 
+-------------------------------------
 
 Wine Recognition Datasheet
 
@@ -104,20 +125,32 @@ Instances: There are a total of 178 wine samples.
 Attributes:
 
 Alcohol,
+
 Malic acid,
+
 Ash,
+
 Alkalinity of ash,
+
 Magnesium,
+
 Total phenols,
+
 Flavanoids,
+
 Nonflavanoid phenols,
+
 Proanthocyanins,
+
 Color intensity,
+
 Hue,
+
 OD280/OD315 of diluted wines,
+
 Proline.
 
-
+----------------------------
 
 Model Card
 Model Name:
@@ -131,13 +164,18 @@ This model is a feedforward neural network designed to classify wine samples bas
 Model Details:
 
 Architecture: Feedforward Neural Network with 1 hidden layer
+
 Training Data: The Wine dataset, consisting of chemical features such as fixed acidity, volatile acidity, citric acid, residual sugar, etc.
+
 Validation Data: A subset of the Wine dataset, used for hyperparameter tuning and early stopping.
+
 Test Data: A distinct subset of the Wine dataset, used for final evaluation.
+
 Hyperparameters: Batch size: 2, Epochs: 2, Number of hidden layers: 1, Units in the first hidden layer: 2
 Evaluation:
 
 Metrics:
+
 Training Accuracy: 56.64%
 
 Validation Accuracy: 65.52%
@@ -151,7 +189,9 @@ Bias Evaluation: Further investigation may be required to identify any underlyin
 Usage:
 
 Intended Use: The model is designed to recognize and classify wines into different categories based on their chemical properties.
+
 Limitations: The chosen architecture and hyperparameters may not be optimal for the problem, as indicated by the relatively low test accuracy. Further experimentation with the architecture, hyperparameters, and preprocessing techniques may improve performance.
+
 Ethical Considerations: Care should be taken when using the model in critical decision-making processes, as its predictive accuracy may not be sufficient for certain applications. Users should be aware of the model's limitations and the context in which it was trained.
 References:
 
