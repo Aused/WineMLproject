@@ -93,7 +93,7 @@ The relatively low accuracy on the test set also suggests that the model might n
 Further investigation would be needed to understand the underlying cause of these results. Potential areas to explore might include the data distribution, model architecture, and the range of hyperparameters considered in the optimization process. The addition of more informative features, data preprocessing, or trying different machine learning models could also lead to improved results.
 
 
-Wine Recognition Dataset
+Wine Recognition Datasheet
 
 Features: The data consists of 13 different measurements taken for different constituents found in three types of wine grown in the same region in Italy.
 
@@ -116,3 +116,43 @@ Color intensity,
 Hue,
 OD280/OD315 of diluted wines,
 Proline.
+
+
+
+Model Card
+Model Name:
+
+Wine Recognition Model
+
+Model Description:
+
+This model is a feedforward neural network designed to classify wine samples based on their physicochemical properties. It's trained using the Wine dataset and optimized with hyperparameter tuning to predict wine types.
+
+Model Details:
+
+Architecture: Feedforward Neural Network with 1 hidden layer
+Training Data: The Wine dataset, consisting of chemical features such as fixed acidity, volatile acidity, citric acid, residual sugar, etc.
+Validation Data: A subset of the Wine dataset, used for hyperparameter tuning and early stopping.
+Test Data: A distinct subset of the Wine dataset, used for final evaluation.
+Hyperparameters: Batch size: 2, Epochs: 2, Number of hidden layers: 1, Units in the first hidden layer: 2
+Evaluation:
+
+Metrics:
+Training Accuracy: 56.64%
+
+Validation Accuracy: 65.52%
+
+Test Accuracy: 50.00%
+
+Loss: 0.8377 (test loss)
+
+Bias Evaluation: Further investigation may be required to identify any underlying biases in the dataset or model. The low accuracy in both training and test phases suggests that the model may be underfitting the data.
+
+Usage:
+
+Intended Use: The model is designed to recognize and classify wines into different categories based on their chemical properties.
+Limitations: The chosen architecture and hyperparameters may not be optimal for the problem, as indicated by the relatively low test accuracy. Further experimentation with the architecture, hyperparameters, and preprocessing techniques may improve performance.
+Ethical Considerations: Care should be taken when using the model in critical decision-making processes, as its predictive accuracy may not be sufficient for certain applications. Users should be aware of the model's limitations and the context in which it was trained.
+References:
+
+Wine Dataset: A well-known dataset used in machine learning, containing chemical properties of wines from different cultivars.
