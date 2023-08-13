@@ -2,6 +2,7 @@
 ML Project for final assignment on AI/ML course
 
 Hyperparameter Tuning and Neural Network Model for Classification
+
 This project involves hyperparameter tuning and training a feedforward neural network model for classification tasks. The code uses Hyperopt for tuning hyperparameters and Keras to build and train the model.
 
 1. Define the Hyperparameter Space
