@@ -10,15 +10,15 @@ This project involves hyperparameter tuning and training a feedforward neural ne
 First, we define the hyperparameter space, specifying the possible values for each hyperparameter.
 
 
-space = {
-    'n_layers': hp.choice('n_layers', [1, 2]),
-    
-    'n_units_layer_0': hp.choice('n_units_layer_0', [32, 64, 128]),
-    
-    'epochs': hp.choice('epochs', [50, 100]),
-    
-    'batch_size': hp.choice('batch_size', [16, 32, 64])    
-}
+    space = {
+        'n_layers': hp.choice('n_layers', [1, 2]),
+        
+        'n_units_layer_0': hp.choice('n_units_layer_0', [32, 64, 128]),
+        
+        'epochs': hp.choice('epochs', [50, 100]),
+        
+        'batch_size': hp.choice('batch_size', [16, 32, 64])    
+    }
 
 
 In the space definition, n_layers represents the number of hidden layers, and n_units_layer_0 indicates the number of units in the first hidden layer. The epochs and batch_size control the training process.
